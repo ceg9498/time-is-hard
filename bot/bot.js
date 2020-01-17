@@ -25,6 +25,9 @@ function runBot(){
     const command = client.commands.get(commandName) || client.commands.find((c)=> c.aliases && c.aliases.includes(commandName));
 
     if(!command) return;
+    if(command.ownerOnly && process.env.OWNER_ID !== message.author.id){
+      message.channel.send("Only the bot's owner may use this command.");
+    }
 
     try {
       command.execute(message, args);
