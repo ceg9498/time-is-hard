@@ -23,8 +23,8 @@ const zones = new Map([
   ['jst', 'Japan']
 ]);
 
-function convertTime(input){
-  let convertObj = formatInput(input);
+function convertTime(args){
+  let convertObj = formatInput(args);
   let temp = convertObj.initTime.split('');
   let hour;
   if(temp[temp.length-2]+temp[temp.length-1] === 'am'){
@@ -41,15 +41,13 @@ function convertTime(input){
   return formatTime(convertObj.endTime, initMoment);
 }
 
-function formatInput(input){
-  let splitInput = input.split(' ');
-  // [0] will be the command, eg. `tz`, and
-  // [3] will be "to", which just makes it more like English
+function formatInput(args){
+  // [2] will be "to", which just makes it more like English
   return {
-    initTime: splitInput[1],
-    initZone: splitInput[2].toLowerCase(),
+    initTime: args[0],
+    initZone: args[1].toLowerCase(),
     endTime: null,
-    endZone: splitInput[4].toLowerCase()
+    endZone: args[3].toLowerCase()
   }
 }
 
