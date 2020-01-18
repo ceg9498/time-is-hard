@@ -26,7 +26,7 @@ function runBot(){
 
     if(!command) return;
     if(command.ownerOnly && process.env.OWNER_ID !== message.author.id){
-      message.channel.send("Only the bot's owner may use this command.");
+      return message.channel.send("Only the bot's owner may use this command.");
     }
 
     try {
