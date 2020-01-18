@@ -1,5 +1,5 @@
 const moment = require('moment-timezone');
-const zones = require('../zones');
+const {zones} = require('../zones');
 
 function convertTime(args){
   let convertObj = formatInput(args);
